@@ -317,7 +317,7 @@ const RATIOS={'1:1':[1080,1080],'4:5':[1080,1350],'9:16':[1080,1920]};
 const FONT='"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif';
 const KEY='t03.templates.v1';
 const $=s=>document.querySelector(s);
-const S={ratio:'1:1',text:'여기에 문구를 입력하세요 ✨',size:88,color:'#ffffff',x:50,y:50,img:null};
+const S={ratio:'1:1',text:'여기에 문구를 입력하세요',size:88,color:'#ffffff',x:50,y:50,img:null};
 let imgEl=null,T=[];
 const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2);
 const clean=t=>String(t).replace(/[\u0000-\u0009\u000B-\u001F\u007F]/g,'').slice(0,500);
@@ -414,7 +414,7 @@ function valid(t){
 function persist(){try{localStorage.setItem(KEY,JSON.stringify(T));return true}catch{return false}}
 function loadStore(){
   try{const r=localStorage.getItem(KEY);if(r!==null){const a=JSON.parse(r);if(Array.isArray(a)){T=a.map(x=>{try{return valid(x)}catch{return null}}).filter(Boolean);return}}}catch{}
-  T=[['기본 밈','1:1','오늘도 출근 완료 😎',90,'#ffffff',50,50],['카드뉴스 제목','4:5','3분 만에 보는\n전파 이야기',96,'#ffe066',50,40],['스토리 문구','9:16','저장하고\n나중에 보기 📌',84,'#ffffff',50,75]]
+  T=[['기본 밈','1:1','여기에 문구를 입력하세요',90,'#ffffff',50,50],['카드뉴스 제목','4:5','여기에 문구를 입력하세요',96,'#ffe066',50,40],['스토리 문구','9:16','여기에 문구를 입력하세요',84,'#ffffff',50,75]]
    .map(([name,ratio,text,size,color,x,y])=>({id:uid(),name,ratio,text,size,color,x,y,img:null}));
   persist();
 }
